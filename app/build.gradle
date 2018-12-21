@@ -1,0 +1,134 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'kotlin-allopen'
+
+allOpen {
+    // allows mocking for classes w/o directly opening them for release builds
+    annotation 'com.example.meirlen.mtrello.testing.OpenClass'
+}
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.example.meirlen.mtrello"
+        minSdkVersion 18
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "com.example.meirlen.mtrello.util.TrelloTestRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        androidTest.java.srcDirs += "src/test-common/java"
+        test.java.srcDirs += "src/test-common/java"
+    }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+    buildTypes.each {
+        it.buildConfigField 'String', 'TRELLO_API_KEY', TRELLO_API_KEY
+        it.buildConfigField 'String', 'TRELLO_TOKEN', TRELLO_TOKEN
+    }
+}
+
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+
+    testImplementation 'junit:junit:4.12'
+
+
+    androidTestImplementation 'androidx.test:runner:1.1.1-alpha01'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1-alpha01'
+
+    implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.2'
+    implementation "com.google.android.material:material:1.1.0-alpha01"
+
+    //for lifecycle and LiveData and ViewModel
+    implementation 'androidx.lifecycle:lifecycle-runtime:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.0.0'
+
+    implementation 'androidx.room:room-runtime:2.1.0-alpha02'
+    annotationProcessor 'androidx.room:room-compiler:2.1.0-alpha02'
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-jackson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+
+
+
+
+
+
+    //Other Libs
+    implementation "com.miguelcatalan:materialsearchview:$materialSearchViewVersion"
+    implementation "com.mikhaellopez:circularprogressbar:$circularProgressbarVersion"
+    implementation "joda-time:joda-time:$jodaTimeVersion"
+    implementation "com.jakewharton.timber:timber:$timberVersion"
+    implementation "com.jakewharton:butterknife:$butterKnifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
+
+    // Testing
+    testImplementation "org.robolectric:robolectric:3.8"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0-RC3"
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    androidTestImplementation "org.mockito:mockito-core:$mockitoVersion"
+    androidTestImplementation "org.mockito:mockito-android:$mockitoVersion"
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation 'androidx.arch.core:core-testing:2.0.0'
+    testImplementation "com.squareup.okhttp3:mockwebserver:$mockWebServerVersion"
+
+    // Test helpers for Room
+    testImplementation 'androidx.room:room-testing:2.1.0-alpha02'
+    androidTestImplementation('androidx.arch.core:core-testing:2.0.0', {
+    })
+
+    androidTestImplementation "org.mockito:mockito-core:$mockitoVersion", {
+        exclude group: 'net.bytebuddy'
+    }
+    // image
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+    //DI
+    implementation "org.koin:koin-android:$koinVersion"
+    // Koin AndroidX Scope feature
+    implementation "org.koin:koin-androidx-scope:$koinVersion"
+    // Koin AndroidX ViewModel feature
+    implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
+
+
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.22.5'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.22.5"
+    implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:1.0.0'
+
+}
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}
