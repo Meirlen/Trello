@@ -6,5 +6,5 @@
 - Koin()
 - Kotlin coroutines (async)
 - Retrofit
-- arch components(ViewModel,LiveData)
+- Android architecture components(ViewModel,LiveData)
 - MVVM(Clean  architecture)
