@@ -4,12 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import com.example.meirlen.mtrello.ext.replaceByTag
-import com.example.meirlen.mtrello.ui.fragments.BoardsFragment
+import com.example.meirlen.mtrello.utill.ext.replaceByTag
+import com.example.meirlen.mtrello.ui.board.BoardsFragment
 import com.example.meirlen.mtrello.ui.custom.SimpleOnTabSelectedListener
-import com.example.meirlen.mtrello.ui.fragments.HomeFragment
-import com.example.meirlen.mtrello.ui.fragments.ProfileFragment
+import com.example.meirlen.mtrello.ui.home.HomeFragment
+import com.example.meirlen.mtrello.ui.profile.ProfileFragment
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
 

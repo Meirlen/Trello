@@ -1,14 +1,14 @@
 package com.example.meirlen.mtrello.di
 
-import com.example.meirlen.mtrello.api.ApiService
-import com.example.meirlen.mtrello.constants.Constant
-import com.example.meirlen.mtrello.constants.Constant.BASE_URL
-import com.example.meirlen.mtrello.viewmodel.BoardViewModel
-import com.example.meirlen.mtrello.repos.BoardRepository
-import com.example.meirlen.mtrello.repos.BoardRepositoryImpl
-import com.example.meirlen.mtrello.util.AuthInterceptor
-import com.example.meirlen.mtrello.util.vm.ApplicationSchedulerProvider
-import com.example.meirlen.mtrello.util.vm.SchedulerProvider
+import com.example.meirlen.mtrello.data.datasource.remote.ApiService
+import com.example.meirlen.mtrello.base.constants.Constant
+import com.example.meirlen.mtrello.base.constants.Constant.BASE_URL
+import com.example.meirlen.mtrello.ui.board.BoardViewModel
+import com.example.meirlen.mtrello.data.repository.BoardRepository
+import com.example.meirlen.mtrello.data.repository.BoardRepositoryImpl
+import com.example.meirlen.mtrello.utill.interceptors.AuthInterceptor
+import com.example.meirlen.mtrello.utill.shedulers.ApplicationSchedulerProvider
+import com.example.meirlen.mtrello.utill.shedulers.SchedulerProvider
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.experimental.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
