@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.meirlen.mtrello.R
 import com.example.meirlen.mtrello.base.BaseFragment
+import com.example.meirlen.mtrello.base.vo.Status
 import com.example.meirlen.mtrello.utill.ext.toast
 import com.example.meirlen.mtrello.utill.interfaces.ItemClickListener
 import com.example.meirlen.mtrello.data.datasource.entities.Board
@@ -22,13 +23,9 @@ class BoardsFragment : BaseFragment<List<Board>>(), ItemClickListener<Board> {
         return R.layout.board_list_fragment;
     }
 
-
     val TAG = javaClass.simpleName
-
-    val model: BoardViewModel by viewModel()
-
+    private val model: BoardViewModel by viewModel()
     private lateinit var mAdapter: BoardsAdapter
-
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -40,35 +37,26 @@ class BoardsFragment : BaseFragment<List<Board>>(), ItemClickListener<Board> {
 
         model.getBoards()
 
-        model.uiData.observe(this, Observer<List<Board>> {
-            if (it != null) {
-                context?.toast(it.size.toString())
-                mAdapter.setData(it as ArrayList<Board>)
-            }
-        })
-
-        model.searchEvent.observe(this, Observer(function = fun(searchEvent: BoardViewModel.SearchEvent?) {
-            if (searchEvent != null) {
-                if (searchEvent.isLoading) {
+        model.uiData.observe(this, Observer {
+            when (it?.status) {
+                Status.LOADING -> {
                     // displayProgress()
-                } else {
+                }
+                Status.SUCCESS -> {
+                    Log.d(TAG, "--> Success! | loaded ${it.data?.size ?: 0} records.")
                     // displayNormal()
-                    if (searchEvent.isSuccess) {
-
-                    } else if (searchEvent.error != null) {
-                        context?.toast(searchEvent.error)
-                        Log.d("ErCase",searchEvent.error)
-                    }
+                    mAdapter.setData(it.data as ArrayList<Board>)
+                }
+                Status.ERROR -> {
+                    toast("Error: ${it.message}")
                 }
             }
-        }))
-
+        })
 
     }
 
     override fun onItemClick(dataObject: Board) {
         // router.showColumns(context, dataObject.id)
-        // toast(dataObject.id)
     }
 
 }
