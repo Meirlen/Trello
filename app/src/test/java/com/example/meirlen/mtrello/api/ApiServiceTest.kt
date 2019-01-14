@@ -65,10 +65,10 @@ class ApiServiceTest {
     @Test
     fun getBoards() {
         enqueueResponse("list-board.json")
-        val yigit = (getValue(service.getBoards()) as Response<List<Board>>)
+        val yigit = (getValue(service.getBoards()) as List<Board>)
         val request = mockWebServer.takeRequest()
         Assert.assertThat(request.path, CoreMatchers.`is`("/1/members/me/columns"))
-        Assert.assertThat<List<Board>>(yigit.body(), IsNull.notNullValue())
+        Assert.assertThat<List<Board>>(yigit, IsNull.notNullValue())
     }
     @Test
     fun getBoardsColumns() {
