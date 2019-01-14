@@ -2,6 +2,7 @@ package com.example.meirlen.mtrello.data.datasource.remote
 
 import com.example.meirlen.mtrello.data.datasource.entities.Board
 import kotlinx.coroutines.experimental.Deferred
+import retrofit2.Response
 import retrofit2.http.GET
 
 
@@ -16,5 +17,5 @@ interface ApiService {
 
 
     @GET("1/members/me/boards")
-    fun getBoards(): Deferred<List<Board>>
+    fun getBoards(): Deferred<Response<List<Board>>>
 }

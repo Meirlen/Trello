@@ -31,6 +31,7 @@ import org.hamcrest.core.IsNull
 import org.junit.*
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -64,10 +65,10 @@ class ApiServiceTest {
     @Test
     fun getBoards() {
         enqueueResponse("list-board.json")
-        val yigit = (getValue(service.getBoards()) as ApiSuccessResponse).body
+        val yigit = (getValue(service.getBoards()) as Response<List<Board>>)
         val request = mockWebServer.takeRequest()
         Assert.assertThat(request.path, CoreMatchers.`is`("/1/members/me/columns"))
-        Assert.assertThat<List<Board>>(yigit, IsNull.notNullValue())
+        Assert.assertThat<List<Board>>(yigit.body(), IsNull.notNullValue())
     }
     @Test
     fun getBoardsColumns() {

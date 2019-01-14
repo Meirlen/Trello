@@ -6,6 +6,7 @@ import com.example.meirlen.mtrello.base.constants.Constant.BASE_URL
 import com.example.meirlen.mtrello.ui.board.BoardViewModel
 import com.example.meirlen.mtrello.data.repository.BoardRepository
 import com.example.meirlen.mtrello.data.repository.BoardRepositoryImpl
+import com.example.meirlen.mtrello.routers.MainRouter
 import com.example.meirlen.mtrello.utill.interceptors.AuthInterceptor
 import com.example.meirlen.mtrello.utill.shedulers.ApplicationSchedulerProvider
 import com.example.meirlen.mtrello.utill.shedulers.SchedulerProvider
@@ -40,6 +41,11 @@ val appModule = module {
         }
 
     }
+
+    single {
+        MainRouter()
+    }
+
 
 }
 val rxModule = module {

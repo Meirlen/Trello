@@ -56,7 +56,7 @@ class BoardsFragment : BaseFragment<List<Board>>(), ItemClickListener<Board> {
     }
 
     override fun onItemClick(dataObject: Board) {
-        // router.showColumns(context, dataObject.id)
+        router.showColumns(context, dataObject.id)
     }
 
 }
