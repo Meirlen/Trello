@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.MediatorLiveData
 
 import com.example.meirlen.mtrello.R
+import com.example.meirlen.mtrello.base.vo.Resource
 import com.example.meirlen.mtrello.data.datasource.entities.Board
 import com.example.meirlen.mtrello.routers.MainRouter
 import com.example.meirlen.mtrello.testing.SingleFragmentActivity
@@ -11,8 +12,6 @@ import com.example.meirlen.mtrello.util.EspressoTestUtil
 import com.example.meirlen.mtrello.util.RecyclerViewMatcher
 import com.example.meirlen.mtrello.util.TestUtil
 import com.example.meirlen.mtrello.util.ViewModelUtil
-import com.example.meirlen.mtrello.viewmodel.BoardsViewModel
-import com.example.meirlen.mtrello.vo.Resource
 import org.hamcrest.CoreMatchers.*
 import org.junit.Before
 import org.junit.Rule

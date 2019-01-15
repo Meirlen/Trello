@@ -16,10 +16,9 @@
 
 package com.android.example.github.api
 
-import android.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 
 import com.example.meirlen.mtrello.data.datasource.remote.ApiService
-import com.example.meirlen.mtrello.api.ApiSuccessResponse
 import com.example.meirlen.mtrello.data.datasource.entities.Board
 import com.example.meirlen.mtrello.data.datasource.entities.Column
 import com.example.meirlen.mtrello.util.LiveDataTestUtil.getValue

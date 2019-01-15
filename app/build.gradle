@@ -13,14 +13,21 @@ allOpen {
     annotation 'com.example.meirlen.mtrello.testing.OpenClass'
 }
 android {
-    compileSdkVersion 28
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
+    buildToolsVersion globalConfiguration["androidBuildToolsVersion"]
+
     defaultConfig {
         applicationId "com.example.meirlen.mtrello"
-        minSdkVersion 18
-        targetSdkVersion 28
+        minSdkVersion globalConfiguration["androidMinSdkVersion"]
+        targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
+        testInstrumentationRunner globalConfiguration["testInstrumentationRunner"]
+
         versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "com.example.meirlen.mtrello.util.TrelloTestRunner"
+        versionName globalConfiguration["versionName"]
+
+        multiDexEnabled true
     }
     buildTypes {
         release {
