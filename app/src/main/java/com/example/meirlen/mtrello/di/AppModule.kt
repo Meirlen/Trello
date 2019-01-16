@@ -1,16 +1,17 @@
 package com.example.meirlen.mtrello.di
 
-import com.example.meirlen.mtrello.data.datasource.remote.ApiService
+import com.example.data.impl.BlogRepositoryImpl
+import com.example.domain.interactor.blog.ArticleUseCase
+import com.example.domain.repository.BlogRepository
+import com.example.data.remote.ApiService
 import com.example.meirlen.mtrello.base.constants.Constant
 import com.example.meirlen.mtrello.base.constants.Constant.BASE_URL
 import com.example.meirlen.mtrello.ui.board.BoardViewModel
-import com.example.meirlen.mtrello.data.repository.BoardRepository
-import com.example.meirlen.mtrello.data.repository.BoardRepositoryImpl
 import com.example.meirlen.mtrello.routers.MainRouter
 import com.example.meirlen.mtrello.utill.interceptors.AuthInterceptor
 import com.example.meirlen.mtrello.utill.shedulers.ApplicationSchedulerProvider
 import com.example.meirlen.mtrello.utill.shedulers.SchedulerProvider
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.experimental.CoroutineCallAdapterFactory
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.ext.koin.viewModel
@@ -31,12 +32,14 @@ val appModule = module {
     module("repository") {
 
         factory {
-            BoardRepositoryImpl(get()) as BoardRepository
+            BlogRepositoryImpl(get()) as BlogRepository
         }
-
+        factory {
+            ArticleUseCase(get())
+        }
         module("viewModel") {
             viewModel {
-                BoardViewModel(get(), get())
+                BoardViewModel(get())
             }
         }
 
@@ -69,6 +72,6 @@ inline fun <reified T> createWebService(okHttpClient: OkHttpClient, url: String)
             .baseUrl(url)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(CoroutineCallAdapterFactory()).build()
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build()
     return retrofit.create(T::class.java)
 }

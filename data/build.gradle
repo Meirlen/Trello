@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
@@ -10,15 +11,17 @@ android {
     defaultConfig {
         minSdkVersion globalConfiguration["androidMinSdkVersion"]
         targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
-        testInstrumentationRunner globalConfiguration["testInstrumentationRunner"]
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+}
 
-    testOptions {
-        unitTests {
-            includeAndroidResources = true
-        }
-    }
+kapt {
+    generateStubs = true
+}
 
+
+ext {
+    requeryVersion = '1.4.1'
 }
 
 dependencies {
@@ -28,18 +31,26 @@ dependencies {
 
     implementation "io.reactivex.rxjava2:rxjava:$rxVersion"
     implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
-    implementation 'javax.inject:javax.inject:1'
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-jackson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+    implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+
+
+    implementation "io.requery:requery:$requeryVersion"
+    implementation "io.requery:requery-kotlin:$requeryVersion"
+    implementation "io.requery:requery-android:$requeryVersion"
+    kapt "io.requery:requery-processor:$requeryVersion"
 
     implementation project(':gateway')
+    implementation project(':domain')
 
     testImplementation "junit:junit:$junitVersion"
     testImplementation "org.mockito:mockito-core:$mockitoVersion"
     testImplementation "com.nhaarman:mockito-kotlin-kt1.1:$mockitoKotlinVersion"
+    androidTestImplementation "com.android.support.test:runner:$testRunnerVersion"
 }
-
-
-repositories {
-    mavenCentral()
-}
-
-

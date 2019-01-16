@@ -9,7 +9,6 @@ abstract class CompletableUseCase<in Params> : UseCase() {
     abstract fun buildUseCaseCompletable(params: Params): Completable
 
     fun execute(onComplete: (() -> Unit), onError: ((t: Throwable) -> Unit), params: Params) {
-        checkIsAttachedToLifecycle()
         disposeLatest()
         val disposable = buildUseCaseCompletable(params)
             .subscribeOn(Schedulers.io())

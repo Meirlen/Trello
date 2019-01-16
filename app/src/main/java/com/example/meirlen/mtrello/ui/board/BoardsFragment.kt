@@ -8,9 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.meirlen.mtrello.R
 import com.example.meirlen.mtrello.base.BaseFragment
 import com.example.meirlen.mtrello.base.vo.Status
-import com.example.meirlen.mtrello.utill.ext.toast
 import com.example.meirlen.mtrello.utill.interfaces.ItemClickListener
-import com.example.meirlen.mtrello.data.datasource.entities.Board
+import com.example.gateway.entity.Board
 import com.example.meirlen.mtrello.ui.board.list.BoardsAdapter
 import kotlinx.android.synthetic.main.board_list_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -20,7 +19,7 @@ class BoardsFragment : BaseFragment<List<Board>>(), ItemClickListener<Board> {
     }
 
     override fun getContentView(): Int {
-        return R.layout.board_list_fragment;
+        return R.layout.board_list_fragment
     }
 
     val TAG = javaClass.simpleName
@@ -35,7 +34,7 @@ class BoardsFragment : BaseFragment<List<Board>>(), ItemClickListener<Board> {
         mRecyclerView.layoutManager = LinearLayoutManager(context)
         mRecyclerView.adapter = mAdapter
 
-        model.getBoards()
+        model.getBoards("XKOKM4X2ZX1ZZsasaAzxxcxdS45SZXZXSD")
 
         model.uiData.observe(this, Observer {
             when (it?.status) {

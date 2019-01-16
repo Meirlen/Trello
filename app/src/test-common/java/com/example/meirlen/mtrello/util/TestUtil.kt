@@ -17,7 +17,7 @@
 package com.example.meirlen.mtrello.util
 
 
-import com.example.meirlen.mtrello.data.datasource.entities.Board
+import com.example.gateway.entity.Board
 
 object TestUtil {
 

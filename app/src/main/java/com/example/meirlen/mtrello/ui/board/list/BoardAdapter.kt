@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.meirlen.mtrello.R
-import com.example.meirlen.mtrello.data.datasource.entities.Board
+import com.example.gateway.entity.Board
 import com.example.meirlen.mtrello.utill.interfaces.ItemClickListener
 import com.example.meirlen.mtrello.utill.ext.loadImage
 import kotlinx.android.synthetic.main.item_board.view.*

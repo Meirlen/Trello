@@ -5,7 +5,7 @@ import androidx.lifecycle.MediatorLiveData
 
 import com.example.meirlen.mtrello.R
 import com.example.meirlen.mtrello.base.vo.Resource
-import com.example.meirlen.mtrello.data.datasource.entities.Board
+import com.example.gateway.entity.Board
 import com.example.meirlen.mtrello.routers.MainRouter
 import com.example.meirlen.mtrello.testing.SingleFragmentActivity
 import com.example.meirlen.mtrello.util.EspressoTestUtil

@@ -1,4 +1,4 @@
-package com.shopapp.gateway
+package com.example.gateway
 
 interface ApiCallback<in T> {
 

@@ -18,8 +18,8 @@ package com.android.example.github.api
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 
-import com.example.meirlen.mtrello.data.datasource.remote.ApiService
-import com.example.meirlen.mtrello.data.datasource.entities.Board
+import com.example.data.remote.ApiService
+import com.example.gateway.entity.Board
 import com.example.meirlen.mtrello.data.datasource.entities.Column
 import com.example.meirlen.mtrello.util.LiveDataTestUtil.getValue
 import okhttp3.mockwebserver.MockResponse
@@ -30,7 +30,6 @@ import org.hamcrest.core.IsNull
 import org.junit.*
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

@@ -9,11 +9,7 @@ abstract class UseCase {
     protected var lastDisposable: Disposable? = null
     var disposables: CompositeDisposable = CompositeDisposable()
 
-    fun checkIsAttachedToLifecycle() {
-        if (!isAttachedToLifecycle()) {
-            throw RuntimeException("You have to attach ${this.javaClass.name} to the lifecycle.")
-        }
-    }
+
 
     protected fun disposeLatest() {
         lastDisposable?.let {
