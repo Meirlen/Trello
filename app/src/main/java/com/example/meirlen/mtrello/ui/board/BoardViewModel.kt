@@ -11,7 +11,7 @@ class BoardViewModel(private val getBoardsUseCase: GetBoardsUseCase) : ViewModel
 
     val uiData = MutableLiveData<Resource<List<Board>>>()
 
-    fun getBoards(id: String) {
+    fun getBoards() {
 
         getBoardsUseCase.execute(
                 { uiData.value = Resource.success(it) },

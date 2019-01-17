@@ -12,7 +12,7 @@ import com.example.meirlen.mtrello.ui.profile.ProfileFragment
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(){
+class HomeActivity : AppCompatActivity(){
 
     companion object {
 
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(){
         const val PROFILE = 4
 
         fun getStartIntent(context: Context, isNewTask: Boolean = false): Intent {
-            val intent = Intent(context, MainActivity::class.java)
+            val intent = Intent(context, HomeActivity::class.java)
             if (isNewTask) {
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
             }
@@ -40,11 +40,9 @@ class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        currentScreen = savedInstanceState?.getInt(CURRENT_SCREEN, HOME) ?: HOME
+        currentScreen = savedInstanceState?.getInt(CURRENT_SCREEN, SEARCH) ?: HOME
         setupNavigation()
         switchFragment(currentScreen)
-
     }
 
     private fun setupNavigation() {
@@ -57,7 +55,7 @@ class MainActivity : AppCompatActivity(){
     }
 
     private fun switchFragment(position: Int) {
-        currentScreen = position
+       /* currentScreen = position
         supportFragmentManager.replaceByTag(R.id.frame_container, position.toString(), {
             when (position) {
                 HOME -> BoardsFragment()
@@ -67,7 +65,7 @@ class MainActivity : AppCompatActivity(){
                 PROFILE -> ProfileFragment()
                 else -> BoardsFragment()
             }
-        }).commit()
+        }).commit()*/
     }
 
 

@@ -18,7 +18,7 @@ import org.junit.Assert.assertEquals
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [Build.VERSION_CODES.O_MR1])
 class WelcomeActivityTest {
-    private lateinit var activity: WelcomeActivity
+   /* private lateinit var activity: WelcomeActivity
 
     @Before
     @Throws(Exception::class)
@@ -41,5 +41,5 @@ class WelcomeActivityTest {
         assertEquals(10, rightMargin)
         val leftMargin = (textView.layoutParams as LinearLayout.LayoutParams).leftMargin
         assertEquals(10, leftMargin)
-    }
+    }*/
 }

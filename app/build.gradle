@@ -105,7 +105,7 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
 
     // Testing
-    testImplementation "org.robolectric:robolectric:3.8"
+    testImplementation 'org.robolectric:robolectric:4.1'
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0-RC3"
     testImplementation "org.mockito:mockito-core:$mockitoVersion"
     androidTestImplementation "org.mockito:mockito-core:$mockitoVersion"

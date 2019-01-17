@@ -34,7 +34,7 @@ class BoardsFragment : BaseFragment<List<Board>>(), ItemClickListener<Board> {
         mRecyclerView.layoutManager = LinearLayoutManager(context)
         mRecyclerView.adapter = mAdapter
 
-        model.getBoards("XKOKM4X2ZX1ZZsasaAzxxcxdS45SZXZXSD")
+        model.getBoards()
 
         model.uiData.observe(this, Observer {
             when (it?.status) {

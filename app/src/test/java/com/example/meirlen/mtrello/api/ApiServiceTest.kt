@@ -35,7 +35,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 @RunWith(JUnit4::class)
 class ApiServiceTest {
-
+/*
 
     @Rule
     @JvmField
@@ -89,5 +89,5 @@ class ApiServiceTest {
             mockResponse
                 .setBody(source.readString(Charsets.UTF_8))
         )
-    }
+    }*/
 }
