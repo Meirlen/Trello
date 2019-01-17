@@ -1,8 +1,8 @@
 package com.example.meirlen.mtrello.di
 
-import com.example.data.impl.BlogRepositoryImpl
-import com.example.domain.interactor.blog.ArticleUseCase
-import com.example.domain.repository.BlogRepository
+import com.example.data.impl.BoardRepositoryImpl
+import com.example.domain.interactor.board.GetBoardsUseCase
+import com.example.domain.repository.BoardRepository
 import com.example.data.remote.ApiService
 import com.example.meirlen.mtrello.base.constants.Constant
 import com.example.meirlen.mtrello.base.constants.Constant.BASE_URL
@@ -32,10 +32,10 @@ val appModule = module {
     module("repository") {
 
         factory {
-            BlogRepositoryImpl(get()) as BlogRepository
+            BoardRepositoryImpl(get()) as BoardRepository
         }
         factory {
-            ArticleUseCase(get())
+            GetBoardsUseCase(get())
         }
         module("viewModel") {
             viewModel {

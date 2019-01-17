@@ -3,8 +3,8 @@ package com.example.domain.repository
 import com.example.gateway.entity.Board
 import io.reactivex.Single
 
-interface BlogRepository {
+interface BoardRepository {
 
-    fun getArticleList(): Single<List<Board>>
+    fun getBoardList(): Single<List<Board>>
 
 }

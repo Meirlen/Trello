@@ -5,7 +5,6 @@ import io.reactivex.disposables.Disposable
 
 abstract class UseCase {
 
-    private var isAttached = false
     protected var lastDisposable: Disposable? = null
     var disposables: CompositeDisposable = CompositeDisposable()
 
@@ -19,13 +18,9 @@ abstract class UseCase {
         }
     }
 
-    fun attachToLifecycle() {
-        isAttached = true
-    }
 
     fun dispose() {
         disposables.clear()
     }
 
-    fun isAttachedToLifecycle() = isAttached
 }

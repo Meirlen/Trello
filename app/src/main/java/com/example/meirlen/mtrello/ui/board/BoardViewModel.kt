@@ -2,24 +2,21 @@ package com.example.meirlen.mtrello.ui.board
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.domain.interactor.blog.ArticleUseCase
-import com.example.meirlen.mtrello.base.vm.AbstractViewModel
+import com.example.domain.interactor.board.GetBoardsUseCase
 import com.example.meirlen.mtrello.base.vo.Resource
 import com.example.gateway.entity.Board
-import com.example.meirlen.mtrello.data.repository.BoardRepository
-import com.example.meirlen.mtrello.utill.shedulers.SchedulerProvider
 
 
-class BoardViewModel(private val articleUseCase: ArticleUseCase) : ViewModel() {
+class BoardViewModel(private val getBoardsUseCase: GetBoardsUseCase) : ViewModel() {
 
     val uiData = MutableLiveData<Resource<List<Board>>>()
 
     fun getBoards(id: String) {
 
-        articleUseCase.execute(
+        getBoardsUseCase.execute(
                 { uiData.value = Resource.success(it) },
                 { uiData.value = Resource.error(it.localizedMessage, null) },
-                id
+                Unit
         )
     }
 
