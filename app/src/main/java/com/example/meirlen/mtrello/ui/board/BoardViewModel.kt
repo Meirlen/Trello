@@ -21,21 +21,3 @@ class BoardViewModel(private val getBoardsUseCase: GetBoardsUseCase) : ViewModel
     }
 
 }
-
-/*
-
-     /*   launch {
-               uiData.value = Resource.loading(null)
-
-               try {
-                   val list = boardRepository.getBoards().await()
-                   uiData.value = Resource.success(list)
-
-               } catch (error: Throwable) {
-                   uiData.value = Resource.error(error.message.toString(), null)
-
-               }
-           }*/
-
-
- */
