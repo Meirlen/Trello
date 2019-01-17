@@ -30,7 +30,7 @@ import com.example.meirlen.mtrello.base.state.LceEmptyView
 import com.example.meirlen.mtrello.base.state.LceLayout
 import kotlinx.android.synthetic.main.fragment_lce.*
 import kotlinx.android.synthetic.main.layout_lce.*
-import com.example.meirlen.mtrello.data.datasource.entities.Error
+import com.example.gateway.entity.Error
 import com.example.meirlen.mtrello.routers.MainRouter
 import com.example.meirlen.mtrello.utill.interfaces.CallbackResponse
 import org.koin.android.ext.android.inject

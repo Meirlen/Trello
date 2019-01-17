@@ -1,7 +1,7 @@
 package com.example.meirlen.mtrello.base
 
 import androidx.annotation.StringRes
-import com.example.meirlen.mtrello.data.datasource.entities.Error
+import com.example.gateway.entity.Error
 
 interface BaseLceView<in T> {
 

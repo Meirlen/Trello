@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.meirlen.mtrello.R
-import com.example.meirlen.mtrello.data.datasource.entities.Error
+import com.example.gateway.entity.Error
 
 import kotlinx.android.synthetic.main.view_lce_error.view.*
 

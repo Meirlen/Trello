@@ -1,4 +1,4 @@
-package com.example.meirlen.mtrello.data.datasource.entities
+package com.example.gateway.entity
 
 sealed class Error : Exception() {
     class Critical : Error()

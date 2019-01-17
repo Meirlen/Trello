@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.meirlen.mtrello.R
-import com.example.meirlen.mtrello.data.datasource.entities.Column
+import com.example.gateway.entity.Column
 import com.example.meirlen.mtrello.utill.interfaces.ItemClickListener
 import kotlinx.android.synthetic.main.item_column.view.*
 

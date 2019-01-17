@@ -31,7 +31,7 @@ import com.example.meirlen.mtrello.base.state.LceLayout
 import kotlinx.android.synthetic.main.fragment_lce.*
 import kotlinx.android.synthetic.main.layout_lce.*
 import com.example.meirlen.mtrello.utill.interfaces.CallbackResponse
-import com.example.meirlen.mtrello.data.datasource.entities.Error
+import com.example.gateway.entity.Error
 
 
 abstract class BaseKoinFragment<in M> : Fragment(),
