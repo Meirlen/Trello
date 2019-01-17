@@ -9,8 +9,6 @@ import com.example.meirlen.mtrello.base.constants.Constant.BASE_URL
 import com.example.meirlen.mtrello.ui.board.BoardViewModel
 import com.example.meirlen.mtrello.routers.MainRouter
 import com.example.meirlen.mtrello.utill.interceptors.AuthInterceptor
-import com.example.meirlen.mtrello.utill.shedulers.ApplicationSchedulerProvider
-import com.example.meirlen.mtrello.utill.shedulers.SchedulerProvider
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -53,7 +51,6 @@ val appModule = module {
 }
 val rxModule = module {
 
-    single { ApplicationSchedulerProvider() as SchedulerProvider }
 }
 
 fun createOkHttpClient(): OkHttpClient {
