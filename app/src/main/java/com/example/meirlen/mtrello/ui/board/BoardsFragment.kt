@@ -15,12 +15,7 @@ import kotlinx.android.synthetic.main.board_list_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class BoardsFragment : BaseFragment<List<Board>>(), ItemClickListener<Board> {
-    override fun onResponse(response: List<Board>) {
-    }
 
-    override fun getContentView(): Int {
-        return R.layout.board_list_fragment
-    }
 
     val TAG = javaClass.simpleName
     private val model: BoardViewModel by viewModel()
@@ -56,6 +51,13 @@ class BoardsFragment : BaseFragment<List<Board>>(), ItemClickListener<Board> {
 
     override fun onItemClick(dataObject: Board) {
         router.showColumns(context, dataObject.id)
+    }
+
+    override fun onResponse(response: List<Board>) {
+    }
+
+    override fun getContentView(): Int {
+        return R.layout.board_list_fragment
     }
 
 }

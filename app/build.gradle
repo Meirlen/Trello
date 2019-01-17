@@ -104,8 +104,13 @@ dependencies {
     testImplementation 'androidx.arch.core:core-testing:2.0.0'
     testImplementation "com.squareup.okhttp3:mockwebserver:$mockWebServerVersion"
     testImplementation 'junit:junit:4.12'
+
+    // Core library
+    androidTestImplementation 'androidx.test:core:1.1.0'
     androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test:rules:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
     // Test helpers for Room
     testImplementation 'androidx.room:room-testing:2.1.0-alpha02'
     androidTestImplementation('androidx.arch.core:core-testing:2.0.0', {

@@ -2,14 +2,12 @@ package com.example.meirlen.mtrello.routers
 
 import android.app.Activity
 import android.os.Build
-import com.example.meirlen.mtrello.MockInstantiator
-import org.junit.Assert.*
+import com.example.meirlen.mtrello.util.MockInstantiator
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
-import org.robolectric.Shadows
 import org.robolectric.annotation.Config
 
 

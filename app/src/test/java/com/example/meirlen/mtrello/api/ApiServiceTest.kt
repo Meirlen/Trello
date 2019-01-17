@@ -21,7 +21,6 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.data.remote.ApiService
 import com.example.gateway.entity.Board
 import com.example.gateway.entity.Column
-import com.example.meirlen.mtrello.util.LiveDataTestUtil.getValue
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import okio.Okio
