@@ -56,7 +56,7 @@ class HomeActivity : AppCompatActivity(){
 
     private fun switchFragment(position: Int) {
        currentScreen = position
-        supportFragmentManager.replaceByTag(R.id.frame_container, position.toString(), {
+       /* supportFragmentManager.replaceByTag(R.id.frame_container, position.toString(), {
             when (position) {
                 HOME -> BoardsFragment()
                 SEARCH -> HomeFragment()
@@ -65,7 +65,7 @@ class HomeActivity : AppCompatActivity(){
                 PROFILE -> ProfileFragment()
                 else -> BoardsFragment()
             }
-        }).commit()
+        }).commit()*/
     }
 
 

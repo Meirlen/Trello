@@ -2,6 +2,7 @@ package com.example.meirlen.mtrello
 
 import android.content.Context
 import android.os.Build
+import androidx.test.core.app.ApplicationProvider
 import kotlinx.android.synthetic.main.activity_main.*
 import org.junit.Assert.*
 import org.junit.Before
@@ -22,7 +23,7 @@ class HomeActivityTest {
 
     @Before
     fun setUpTest() {
-        context=RuntimeEnvironment.application.baseContext
+        context= ApplicationProvider.getApplicationContext()
         val intent=HomeActivity.getStartIntent(context)
         activity = Robolectric.buildActivity(HomeActivity::class.java, intent).create().start().get()
     }
