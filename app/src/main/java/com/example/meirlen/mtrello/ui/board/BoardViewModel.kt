@@ -7,7 +7,7 @@ import com.example.meirlen.mtrello.base.vo.Resource
 import com.example.gateway.entity.Board
 
 
-class BoardViewModel(private val getBoardsUseCase: GetBoardsUseCase) : ViewModel() {
+open  class BoardViewModel(private val getBoardsUseCase: GetBoardsUseCase) : ViewModel() {
 
     val uiData = MutableLiveData<Resource<List<Board>>>()
 

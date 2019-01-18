@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.meirlen.mtrello.R
+import com.example.meirlen.mtrello.utill.ext.toast
 
 class HomeFragment : Fragment() {
 
@@ -19,6 +20,7 @@ class HomeFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.board_list_fragment, container, false)
+
     }
 
 

@@ -19,7 +19,6 @@ import android.app.Application
 import com.example.meirlen.mtrello.di.appModule
 import com.example.meirlen.mtrello.di.rxModule
 import org.koin.android.ext.android.startKoin
-import timber.log.Timber
 
 
 class TrelloApp : Application(){
@@ -27,9 +26,6 @@ class TrelloApp : Application(){
 
     override fun onCreate() {
         super.onCreate()
-        if (BuildConfig.DEBUG) {
-            Timber.plant(Timber.DebugTree())
-        }
 
         startKoin(this, listOf(appModule, rxModule))
 

@@ -21,6 +21,11 @@ class BoardsFragment : BaseFragment<List<Board>>(), ItemClickListener<Board> {
     private val model: BoardViewModel by viewModel()
     private lateinit var mAdapter: BoardsAdapter
 
+    companion object {
+        fun newInstance(): BoardsFragment {
+            return BoardsFragment()
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

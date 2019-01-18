@@ -16,7 +16,6 @@
 
 package com.android.example.github.api
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 
 import com.example.data.remote.ApiService
 import com.example.gateway.entity.Board

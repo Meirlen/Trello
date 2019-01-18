@@ -22,7 +22,7 @@ ext {
     androidMinSdkVersion = 21
     androidTargetSdkVersion = 28
     androidCompileSdkVersion = 28
-    testInstrumentationRunner = 'android.support.test.runner.AndroidJUnitRunner'
+    testInstrumentationRunner =  "androidx.test.runner.AndroidJUnitRunner"
     versionName = '1.0.5'
 
     //DEPENDENCIES
