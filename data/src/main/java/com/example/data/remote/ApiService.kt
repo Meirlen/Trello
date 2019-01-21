@@ -7,7 +7,6 @@ import retrofit2.http.GET
 
 
 interface ApiService {
-
     @GET("1/members/me/boards")
     fun getBoards(): Call<List<Board>>
 }
