@@ -29,12 +29,12 @@ class ColumnAdapter(private  val context: Context, private var listener: ItemCli
         holder.itemView.setOnClickListener { listener.onItemClick(column) }
         holder.itemView.linearLayoutItems.removeAllViews()
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        column.cards.forEach {
+        /*column.cards.forEach {
             val child = inflater.inflate(R.layout.item_card, null)
             val textViewTitle = child.txtTitle as TextView
             textViewTitle.text = it.name
             holder.itemView.linearLayoutItems.addView(child)
-        }
+        }*/
     }
 
     override fun getItemCount(): Int {

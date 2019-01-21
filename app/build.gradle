@@ -98,7 +98,8 @@ dependencies {
     // Koin AndroidX ViewModel feature
     implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
 
-    
+    //RxJava
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
 
 
     // Testing

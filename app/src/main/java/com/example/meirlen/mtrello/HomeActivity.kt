@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.gateway.entity.Board
+import com.example.gateway.entity.Column
 import com.example.meirlen.mtrello.utill.ext.replaceByTag
 import com.example.meirlen.mtrello.ui.board.BoardsFragment
 import com.example.meirlen.mtrello.ui.custom.SimpleOnTabSelectedListener
@@ -52,6 +54,9 @@ class HomeActivity : AppCompatActivity(){
                 switchFragment(tab.position)
             }
         })
+
+
+
     }
 
     private fun switchFragment(position: Int) {

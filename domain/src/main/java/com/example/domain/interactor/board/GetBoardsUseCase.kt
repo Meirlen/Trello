@@ -6,7 +6,7 @@ import com.example.gateway.entity.Board
 import io.reactivex.Single
 import javax.inject.Inject
 
-class GetBoardsUseCase @Inject constructor(private val boardRepository: BoardRepository) :
+open class GetBoardsUseCase @Inject constructor(private val boardRepository: BoardRepository) :
         SingleUseCase<List<Board>, Unit>() {
 
     override fun buildUseCaseSingle(params: Unit): Single<List<Board>> =

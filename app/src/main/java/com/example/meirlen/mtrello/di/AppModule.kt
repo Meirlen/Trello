@@ -26,7 +26,6 @@ val appModule = module {
     factory {
         createWebService<ApiService>(get(), BASE_URL)
     }
-
     module("repository") {
 
         factory {
@@ -40,14 +39,10 @@ val appModule = module {
                 BoardViewModel(get())
             }
         }
-
     }
-
     single {
         MainRouter()
     }
-
-
 }
 val rxModule = module {
 
