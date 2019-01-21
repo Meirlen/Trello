@@ -1,41 +1,42 @@
 package com.example.meirlen.mtrello.ui.board
 
+import com.example.domain.functional.Either
 import com.example.domain.interactor.GetBoardsUseCase
 import com.example.gateway.entity.Board
-import com.example.meirlen.mtrello.util.RxImmediateSchedulerRule
+import com.example.meirlen.mtrello.util.AndroidTest
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.given
-import io.reactivex.Single
+import junit.framework.Assert.assertEquals
+import kotlinx.coroutines.experimental.runBlocking
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mock
-import org.mockito.MockitoAnnotations
 
-class BoardViewModelTest {
-    @Rule
-    @JvmField
-    var testSchedulerRule = RxImmediateSchedulerRule()
+class BoardViewModelTest  : AndroidTest() {
 
     @Mock
     private lateinit var mUseCase: GetBoardsUseCase
-
-    @Mock
-    private lateinit var articles: List<Board>
 
     private lateinit var mViewModel: BoardViewModel
 
     @Before
     fun setUpTest() {
-        MockitoAnnotations.initMocks(this)
         mViewModel = BoardViewModel(mUseCase)
-        mUseCase.mock()
     }
 
     @Test
-    fun shouldShowContent() {
-        given(mUseCase.buildUseCaseSingle(any())).willReturn(Single.just(articles))
-        mViewModel.getBoards()
+    fun `loading movies should update live data`() {
+        val moviesList = listOf(Board("1", "Zhumanov"), Board("2", "Meirlen"))
+        given { runBlocking { mUseCase.run(any()) } }.willReturn(Either.Right(moviesList))
+
+        mViewModel.uiData.observeForever {
+            assertEquals(2, it.size)
+            assertEquals("1", it[0].id)
+            assertEquals("Zhumanov", it[0].name)
+        }
+        runBlocking {
+            mViewModel.getBoards()
+        }
 
     }
 

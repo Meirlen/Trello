@@ -14,7 +14,7 @@ import com.example.meirlen.mtrello.ui.profile.ProfileFragment
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
 
-class HomeActivity : AppCompatActivity(){
+class HomeActivity : AppCompatActivity() {
 
     companion object {
 
@@ -37,8 +37,6 @@ class HomeActivity : AppCompatActivity(){
 
     private var currentScreen: Int = HOME
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -54,13 +52,10 @@ class HomeActivity : AppCompatActivity(){
                 switchFragment(tab.position)
             }
         })
-
-
-
     }
 
     private fun switchFragment(position: Int) {
-       currentScreen = position
+        currentScreen = position
         supportFragmentManager.replaceByTag(R.id.frame_container, position.toString(), {
             when (position) {
                 HOME -> BoardsFragment()
@@ -72,7 +67,6 @@ class HomeActivity : AppCompatActivity(){
             }
         }).commit()
     }
-
 
 
 }

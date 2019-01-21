@@ -19,7 +19,5 @@ open class BoardViewModel(private val getBoardsUseCase: GetBoardsUseCase) : Base
     private fun handleMovieList(movies: List<Board>) {
         this.uiData.value = movies
     }
-
-
 }
 

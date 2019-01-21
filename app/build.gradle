@@ -120,7 +120,7 @@ dependencies {
     androidTestImplementation 'androidx.test:rules:1.1.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     // Testing Robolectric
-    testImplementation 'org.robolectric:robolectric:4.1'
+    testImplementation 'org.robolectric:robolectric:3.8'
 
     // Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.22.1'
