@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.meirlen.mtrello.base
+package com.example.meirlen.mtrello.base.ui
 
 
 import android.os.Bundle
@@ -30,12 +30,15 @@ import com.example.meirlen.mtrello.base.state.LceEmptyView
 import com.example.meirlen.mtrello.base.state.LceLayout
 import kotlinx.android.synthetic.main.fragment_lce.*
 import kotlinx.android.synthetic.main.layout_lce.*
-import com.example.meirlen.mtrello.utill.interfaces.CallbackResponse
 import com.example.gateway.entity.Error
+import com.example.meirlen.mtrello.routers.MainRouter
+import com.example.meirlen.mtrello.utill.interfaces.CallbackResponse
+import org.koin.android.ext.android.inject
 
-
-abstract class BaseKoinFragment<in M> : Fragment(),
+abstract class BaseFragment<in M> : Fragment(),
         BaseLceView<M>, CallbackResponse<M> {
+
+    val router by inject<MainRouter>()
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -100,6 +103,20 @@ abstract class BaseKoinFragment<in M> : Fragment(),
         loadData()
     }
 
+    //CALLBACK HTTP RESPONSE
+    /*fun handleResponse(listResource: Resource<M>) {
+        when (listResource.status) {
+            Status.ERROR ->
+                showError(Error.NonCritical(listResource.message!!))
+            Status.LOADING ->
+                loadData(false)
+            Status.SUCCESS -> {
+                onResponse(listResource)
 
+            }
+        }
+    }*/
+
+    internal fun toast(message: String) = Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 
 }

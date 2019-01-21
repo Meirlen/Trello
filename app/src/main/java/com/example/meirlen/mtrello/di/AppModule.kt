@@ -1,7 +1,7 @@
 package com.example.meirlen.mtrello.di
 
 import com.example.data.impl.BoardRepositoryImpl
-import com.example.domain.interactor.board.GetBoardsUseCase
+import com.example.domain.interactor.GetBoardsUseCase
 import com.example.domain.repository.BoardRepository
 import com.example.data.remote.ApiService
 import com.example.meirlen.mtrello.base.constants.Constant
@@ -63,7 +63,6 @@ inline fun <reified T> createWebService(okHttpClient: OkHttpClient, url: String)
     val retrofit = Retrofit.Builder()
             .baseUrl(url)
             .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build()
+            .addConverterFactory(GsonConverterFactory.create()).build()
     return retrofit.create(T::class.java)
 }

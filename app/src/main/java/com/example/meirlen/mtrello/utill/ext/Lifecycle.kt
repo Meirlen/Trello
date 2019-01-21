@@ -13,16 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.meirlen.mtrello.base.exception
+package com.example.meirlen.mtrello.utill.ext
 
-/**
- * Base Class for handling errors/failures/exceptions.
- * Every feature specific failure should extend [FeatureFailure] class.
- */
-sealed class Failure {
-    object NetworkConnection : Failure()
-    object ServerError : Failure()
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import com.example.domain.exception.Failure
 
-    /** * Extend this class for feature specific failures.*/
-    abstract class FeatureFailure: Failure()
-}
+
+fun <T : Any, L : LiveData<T>> LifecycleOwner.observe(liveData: L, body: (T?) -> Unit) =
+        liveData.observe(this, Observer(body))
+
+fun <L : LiveData<Failure>> LifecycleOwner.failure(liveData: L, body: (Failure?) -> Unit) =
+        liveData.observe(this, Observer(body))

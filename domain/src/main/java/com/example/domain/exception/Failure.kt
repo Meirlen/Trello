@@ -13,25 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.meirlen.mtrello.base
-
-
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.example.domain.exception.Failure
-import com.example.gateway.entity.Board
-import com.example.meirlen.mtrello.base.vo.Resource
+package com.example.domain.exception
 
 /**
- * Base ViewModel class with default Failure handling.
- * @see ViewModel
- * @see Failure
+ * Base Class for handling errors/failures/exceptions.
+ * Every feature specific failure should extend [FeatureFailure] class.
  */
-abstract class BaseViewModeli : ViewModel() {
+sealed class Failure {
+    object NetworkConnection : Failure()
+    object ServerError : Failure()
 
-    var failure: MutableLiveData<Failure> = MutableLiveData()
-
-    protected fun handleFailure(failure: Failure) {
-        this.failure.value = failure
-    }
+    /** * Extend this class for feature specific failures.*/
+    abstract class FeatureFailure: Failure()
 }

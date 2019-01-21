@@ -1,10 +1,8 @@
 package com.example.domain.interactor.board
 
+import com.example.domain.interactor.GetBoardsUseCase
 import com.example.domain.repository.BoardRepository
-import com.nhaarman.mockito_kotlin.any
-import com.nhaarman.mockito_kotlin.given
 import com.nhaarman.mockito_kotlin.verify
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith

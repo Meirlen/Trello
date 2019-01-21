@@ -2,22 +2,24 @@ package com.example.meirlen.mtrello.ui.board
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.domain.interactor.board.GetBoardsUseCase
+import com.example.domain.interactor.GetBoardsUseCase
+import com.example.domain.interactor.UseCase
 import com.example.meirlen.mtrello.base.vo.Resource
 import com.example.gateway.entity.Board
+import com.example.meirlen.mtrello.base.BaseViewModeli
 
 
-open  class BoardViewModel(private val getBoardsUseCase: GetBoardsUseCase) : ViewModel() {
+open class BoardViewModel(private val getBoardsUseCase: GetBoardsUseCase) : BaseViewModeli() {
 
-    val uiData = MutableLiveData<Resource<List<Board>>>()
+    val uiData: MutableLiveData<List<Board>> = MutableLiveData()
 
-    fun getBoards() {
+    fun getBoards() = getBoardsUseCase(UseCase.None())
+    { it.either(::handleFailure, ::handleMovieList) }
 
-        getBoardsUseCase.execute(
-                { uiData.value = Resource.success(it) },
-                { uiData.value = Resource.error(it.localizedMessage, null) },
-                Unit
-        )
+    private fun handleMovieList(movies: List<Board>) {
+        this.uiData.value = movies
     }
 
+
 }
+

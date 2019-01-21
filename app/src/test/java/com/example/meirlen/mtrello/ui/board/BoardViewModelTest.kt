@@ -1,14 +1,11 @@
 package com.example.meirlen.mtrello.ui.board
 
-import com.example.domain.interactor.board.GetBoardsUseCase
+import com.example.domain.interactor.GetBoardsUseCase
 import com.example.gateway.entity.Board
-import com.example.meirlen.mtrello.util.InjectMocksRule
 import com.example.meirlen.mtrello.util.RxImmediateSchedulerRule
-import com.example.meirlen.mtrello.util.mock
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.given
 import io.reactivex.Single
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

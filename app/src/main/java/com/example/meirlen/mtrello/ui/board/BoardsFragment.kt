@@ -3,15 +3,21 @@ package com.example.meirlen.mtrello.ui.board
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.annotation.StringRes
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.domain.exception.Failure
 import com.example.meirlen.mtrello.R
-import com.example.meirlen.mtrello.base.BaseFragment
+import com.example.meirlen.mtrello.base.ui.BaseFragment
 import com.example.meirlen.mtrello.base.vo.Status
 import com.example.meirlen.mtrello.utill.interfaces.ItemClickListener
 import com.example.gateway.entity.Board
 import com.example.meirlen.mtrello.ui.board.list.BoardsAdapter
+import com.example.meirlen.mtrello.utill.ext.failure
+import com.example.meirlen.mtrello.utill.ext.observe
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.board_list_fragment.*
+import kotlinx.android.synthetic.main.view_lce_loading.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class BoardsFragment : BaseFragment<List<Board>>(), ItemClickListener<Board> {
@@ -35,22 +41,24 @@ class BoardsFragment : BaseFragment<List<Board>>(), ItemClickListener<Board> {
         mRecyclerView.adapter = mAdapter
 
         model.getBoards()
+        model.uiData.observe(this, Observer(this@BoardsFragment::renderList))
+        model.failure.observe(this, Observer(this@BoardsFragment::handleFailure))
 
-        model.uiData.observe(this, Observer {
-            when (it?.status) {
-                Status.LOADING -> {
-                    // displayProgress()
-                }
-                Status.SUCCESS -> {
-                    Log.d(TAG, "--> Success! | loaded ${it.data?.size ?: 0} records.")
-                    // displayNormal()
-                    mAdapter.setData(it.data as ArrayList<Board>)
-                }
-                Status.ERROR -> {
-                    toast("Error: ${it.message}")
-                }
-            }
-        })
+    }
+
+    private fun renderList(movies: List<Board>?) {
+        mAdapter.setData(movies as ArrayList<Board>)
+    }
+
+    private fun handleFailure(failure: Failure?) {
+        when (failure) {
+            is Failure.NetworkConnection -> renderFailure(getString(R.string.failure_network_connection))
+            is Failure.ServerError -> renderFailure(getString(R.string.failure_server_error))
+        }
+    }
+
+    private fun renderFailure(message: String) {
+        toast(message)
 
     }
 
