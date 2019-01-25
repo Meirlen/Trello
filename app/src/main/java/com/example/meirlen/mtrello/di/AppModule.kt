@@ -1,7 +1,7 @@
 package com.example.meirlen.mtrello.di
 
 import com.example.data.impl.BoardRepositoryImpl
-import com.example.domain.interactor.board.GetBoardsUseCase
+import com.example.domain.interactor.GetBoardsUseCase
 import com.example.domain.repository.BoardRepository
 import com.example.data.remote.ApiService
 import com.example.meirlen.mtrello.base.constants.Constant
@@ -27,6 +27,8 @@ val appModule = module {
         createWebService<ApiService>(get(), BASE_URL)
     }
 
+}
+val archModule = module {
     module("repository") {
 
         factory {
@@ -40,35 +42,31 @@ val appModule = module {
                 BoardViewModel(get())
             }
         }
-
     }
 
+}
+val utilModule = module {
     single {
         MainRouter()
     }
-
-
-}
-val rxModule = module {
-
 }
 
 fun createOkHttpClient(): OkHttpClient {
     val httpLoggingInterceptor = HttpLoggingInterceptor()
     httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
     val okHttpBuilder = OkHttpClient.Builder()
-            .connectTimeout(Constant.CONNECT_TIMEOUT, TimeUnit.SECONDS)
-            .readTimeout(Constant.READ_TIMEOUT, TimeUnit.SECONDS)
-            .addInterceptor(AuthInterceptor())
-            .addInterceptor(httpLoggingInterceptor)
+        .connectTimeout(Constant.CONNECT_TIMEOUT, TimeUnit.SECONDS)
+        .readTimeout(Constant.READ_TIMEOUT, TimeUnit.SECONDS)
+        .addInterceptor(AuthInterceptor())
+        .addInterceptor(httpLoggingInterceptor)
     return okHttpBuilder.build()
 }
 
 inline fun <reified T> createWebService(okHttpClient: OkHttpClient, url: String): T {
     val retrofit = Retrofit.Builder()
-            .baseUrl(url)
-            .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build()
+        .baseUrl(url)
+        .client(okHttpClient)
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create()).build()
     return retrofit.create(T::class.java)
 }

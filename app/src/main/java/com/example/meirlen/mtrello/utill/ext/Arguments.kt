@@ -5,7 +5,7 @@ package com.example.meirlen.mtrello.utill.ext
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
+
 import java.io.Serializable
 
 /**
@@ -18,17 +18,6 @@ fun Fragment.withArguments(vararg arguments: Pair<String, Serializable>): Fragme
     return this
 }
 
-/**
- * Retrieve property from intent
- */
-fun <T : Any> FragmentActivity.argument(key: String) = lazy { intent.extras[key] as T }
-
-/**
- * Retrieve property with default value from intent
- */
-fun <T : Any> FragmentActivity.argument(key: String, defaultValue: T? = null) = lazy {
-    intent.extras[key] as? T ?: defaultValue
-}
 
 /**
  * Retrieve property from intent

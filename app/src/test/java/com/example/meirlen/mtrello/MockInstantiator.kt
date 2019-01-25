@@ -1,4 +1,4 @@
-package com.example.meirlen.mtrello.util
+package com.example.meirlen.mtrello
 
 import com.example.meirlen.mtrello.base.constants.Constant
 

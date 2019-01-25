@@ -16,23 +16,17 @@
 
 package com.example.meirlen.mtrello.util
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import android.app.Application
+import android.content.Context
+import androidx.test.runner.AndroidJUnitRunner
 
+import com.example.meirlen.mtrello.TestApp
 
 /**
- * Creates a one off view model factory for the given view model instance.
+ * Custom runner to disable dependency injection.
  */
-object ViewModelUtil {
-    fun <T : ViewModel> createFor(model: T): ViewModelProvider.Factory {
-        return object : ViewModelProvider.Factory {
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                if (modelClass.isAssignableFrom(model.javaClass)) {
-                    @Suppress("UNCHECKED_CAST")
-                    return model as T
-                }
-                throw IllegalArgumentException("unexpected model class $modelClass")
-            }
-        }
+class TrelloTestRunner : AndroidJUnitRunner() {
+    override fun newApplication(cl: ClassLoader, className: String, context: Context): Application {
+        return super.newApplication(cl, TestApp::class.java.name, context)
     }
 }

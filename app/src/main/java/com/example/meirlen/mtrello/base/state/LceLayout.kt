@@ -1,4 +1,5 @@
 package com.example.meirlen.mtrello.base.state
+import com.example.gateway.entity.Error
 
 import android.content.Context
 import android.util.AttributeSet
@@ -8,7 +9,6 @@ import androidx.annotation.LayoutRes
 import com.example.meirlen.mtrello.R
 import kotlinx.android.synthetic.main.view_lce_empty.view.*
 import kotlinx.android.synthetic.main.view_lce_error.view.*
-import com.example.gateway.entity.Error
 import kotlinx.android.synthetic.main.layout_lce.view.*
 
 class LceLayout @JvmOverloads constructor(

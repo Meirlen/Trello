@@ -1,4 +1,4 @@
-package com.example.meirlen.mtrello.base
+package com.example.meirlen.mtrello.base.ui
 
 import androidx.annotation.StringRes
 import com.example.gateway.entity.Error

@@ -13,21 +13,16 @@ allOpen {
     annotation 'com.example.meirlen.mtrello.testing.OpenClass'
 }
 android {
-    def globalConfiguration = rootProject.extensions.getByName("ext")
-
-    compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
-    buildToolsVersion globalConfiguration["androidBuildToolsVersion"]
-
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.meirlen.mtrello"
-        minSdkVersion globalConfiguration["androidMinSdkVersion"]
-        targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
-        testInstrumentationRunner globalConfiguration["testInstrumentationRunner"]
-
+        minSdkVersion 21
+        targetSdkVersion 28
         versionCode 1
-        versionName globalConfiguration["versionName"]
-
+        versionName "1.0"
+        testInstrumentationRunner "com.example.meirlen.mtrello.util.TrelloTestRunner"
         multiDexEnabled true
+
     }
     buildTypes {
         release {
@@ -35,7 +30,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
     sourceSets {
         androidTest.java.srcDirs += "src/test-common/java"
         test.java.srcDirs += "src/test-common/java"
@@ -56,15 +50,29 @@ android {
 dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation project(':domain')
-    implementation project(':data')
-    implementation project(':gateway')
-
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    // Testing
+    testImplementation 'junit:junit:4.12'
+    //Testing UI
+    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+    androidTestImplementation 'androidx.test:rules:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    // Testing
+    testImplementation "org.robolectric:robolectric:3.8"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0-RC3"
+    testImplementation "org.mockito:mockito-core:2.21.0"
+    androidTestImplementation "org.mockito:mockito-core:2.21.0"
+    androidTestImplementation "org.mockito:mockito-android:2.21.0"
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation 'androidx.arch.core:core-testing:2.0.0'
+    testImplementation "com.squareup.okhttp3:mockwebserver:$mockWebServerVersion"
+
+
+
 
     implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.2'
     implementation "com.google.android.material:material:1.1.0-alpha01"
@@ -85,6 +93,12 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
     implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
 
+
+    implementation "com.android.support:multidex:1.0.3"
+
+
+
+
     //Other Libs
     implementation "com.miguelcatalan:materialsearchview:$materialSearchViewVersion"
     implementation "com.mikhaellopez:circularprogressbar:$circularProgressbarVersion"
@@ -93,23 +107,7 @@ dependencies {
     implementation "com.jakewharton:butterknife:$butterKnifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
 
-    // Testing
-    debugImplementation 'androidx.fragment:fragment-testing:1.1.0-alpha03'
-    testImplementation 'org.robolectric:robolectric:4.1'
-    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0-RC3"
-    testImplementation "org.mockito:mockito-core:$mockitoVersion"
-    androidTestImplementation "org.mockito:mockito-core:$mockitoVersion"
-    androidTestImplementation "org.mockito:mockito-android:$mockitoVersion"
-    testImplementation "junit:junit:$junitVersion"
-    testImplementation 'androidx.arch.core:core-testing:2.0.0'
-    testImplementation "com.squareup.okhttp3:mockwebserver:$mockWebServerVersion"
-    testImplementation 'junit:junit:4.12'
 
-    // androidx's libraries for testing
-  //  androidTestImplementation 'androidx.test:core:1.1.0'
-  //  androidTestImplementation 'androidx.test:rules:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
 
     // Test helpers for Room
     testImplementation 'androidx.room:room-testing:2.1.0-alpha02'
@@ -119,25 +117,26 @@ dependencies {
     androidTestImplementation "org.mockito:mockito-core:$mockitoVersion", {
         exclude group: 'net.bytebuddy'
     }
-
-
-
     // image
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     implementation 'de.hdodenhof:circleimageview:2.2.0'
 
     //DI
     implementation "org.koin:koin-android:$koinVersion"
-    // Koin AndroidX Scope feature
     implementation "org.koin:koin-androidx-scope:$koinVersion"
-    // Koin AndroidX ViewModel feature
     implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
+    implementation "org.koin:koin-test:$koinVersion"
 
 
     // Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.22.5'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.22.5"
     implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:1.0.0'
+
+
+    implementation project(':data')
+    implementation project(':domain')
+    implementation project(':gateway')
 
 }
 kotlin {

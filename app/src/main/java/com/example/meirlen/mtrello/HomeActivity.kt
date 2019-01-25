@@ -3,21 +3,21 @@ package com.example.meirlen.mtrello
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.tabs.TabLayout
 import com.example.meirlen.mtrello.utill.ext.replaceByTag
 import com.example.meirlen.mtrello.ui.board.BoardsFragment
 import com.example.meirlen.mtrello.ui.custom.SimpleOnTabSelectedListener
 import com.example.meirlen.mtrello.ui.home.HomeFragment
 import com.example.meirlen.mtrello.ui.profile.ProfileFragment
-import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
 
-class HomeActivity : AppCompatActivity(){
+class HomeActivity : AppCompatActivity() {
 
     companion object {
 
         private const val CURRENT_SCREEN = "current_screen"
-
         const val HOME = 0
         const val SEARCH = 1
         const val SHARE = 2
@@ -35,12 +35,10 @@ class HomeActivity : AppCompatActivity(){
 
     private var currentScreen: Int = HOME
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        currentScreen = savedInstanceState?.getInt(CURRENT_SCREEN, SEARCH) ?: HOME
+        currentScreen = savedInstanceState?.getInt(CURRENT_SCREEN, HOME) ?: HOME
         setupNavigation()
         switchFragment(currentScreen)
     }
@@ -49,25 +47,24 @@ class HomeActivity : AppCompatActivity(){
         bottomTabNavigation.getTabAt(currentScreen)?.select()
         bottomTabNavigation.addOnTabSelectedListener(object : SimpleOnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
-                switchFragment(tab.position)
+                 switchFragment(tab.position)
             }
         })
     }
 
     private fun switchFragment(position: Int) {
-       currentScreen = position
-       /* supportFragmentManager.replaceByTag(R.id.frame_container, position.toString(), {
+        currentScreen = position
+        supportFragmentManager.replaceByTag(R.id.frame_container, position.toString(), {
             when (position) {
                 HOME -> BoardsFragment()
                 SEARCH -> HomeFragment()
-                SHARE -> BoardsFragment()
-                FAVOURITE -> BoardsFragment()
+                SHARE -> HomeFragment()
+                FAVOURITE -> HomeFragment()
                 PROFILE -> ProfileFragment()
-                else -> BoardsFragment()
+                else -> HomeFragment()
             }
-        }).commit()*/
+        }).commit()
     }
-
 
 
 }

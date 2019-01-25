@@ -14,13 +14,23 @@
  * limitations under the License.
  */
 
-package com.example.meirlen.mtrello.util
+package com.example.meirlen.mtrello
+import android.app.Application
+
+import com.example.meirlen.mtrello.di.appModule
+import com.example.meirlen.mtrello.di.archModule
+import com.example.meirlen.mtrello.di.utilModule
+import org.koin.android.ext.android.startKoin
 
 
+open  class App : Application(){
 
-import java.util.concurrent.CountDownLatch
-import java.util.concurrent.TimeUnit
 
- object LiveDataTestUtil {
+    override fun onCreate() {
+        super.onCreate()
+
+        startKoin(this, listOf(appModule, archModule, utilModule))
+
+    }
 
 }

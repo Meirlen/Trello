@@ -22,7 +22,7 @@ ext {
     androidMinSdkVersion = 21
     androidTargetSdkVersion = 28
     androidCompileSdkVersion = 28
-    testInstrumentationRunner = 'android.support.test.runner.AndroidJUnitRunner'
+    testInstrumentationRunner = 'com.example.meirlen.mtrello.util.TrelloTestRunner'
     versionName = '1.0.5'
 
     //DEPENDENCIES
@@ -36,7 +36,7 @@ ext {
     frescoVersion = '1.7.1'
 
     //TEST
-    mockitoVersion = '2.8.47'
+    mockitoVersion = '2.21.0"'
     mockitoKotlinVersion = '1.5.0'
     junitVersion = '4.12'
     robolectricVersion = '3.5.1'

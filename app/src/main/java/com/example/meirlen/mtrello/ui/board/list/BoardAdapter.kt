@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.meirlen.mtrello.R
 import com.example.gateway.entity.Board
-import com.example.meirlen.mtrello.utill.interfaces.ItemClickListener
-import com.example.meirlen.mtrello.utill.ext.loadImage
 import kotlinx.android.synthetic.main.item_board.view.*
+import com.example.meirlen.mtrello.utill.ext.loadImage
+import com.example.meirlen.mtrello.utill.interfaces.ItemClickListener
 
 class BoardsAdapter(private var listener: ItemClickListener<Board>) : RecyclerView.Adapter<BoardsAdapter.MovieViewHolder>() {
 
@@ -25,7 +25,7 @@ class BoardsAdapter(private var listener: ItemClickListener<Board>) : RecyclerVi
         val board = mMovieList[position]
         holder.itemView.txtTitle!!.text = board.name
         holder.itemView.setOnClickListener { listener.onItemClick(board)}
-        holder.itemView.coverImageView.loadImage("https://pp.userapi.com/c841322/v841322681/5f307/sEetuxRTuIg.jpg")
+       // holder.itemView.coverImageView.loadImage("https://pp.userapi.com/c841322/v841322681/5f307/sEetuxRTuIg.jpg")
     }
 
     override fun getItemCount(): Int {

@@ -2,12 +2,14 @@ package com.example.meirlen.mtrello.base.state
 
 import android.content.Context
 
+
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.constraintlayout.widget.ConstraintLayout
+
 import com.example.meirlen.mtrello.R
 
 import kotlinx.android.synthetic.main.view_lce_empty.view.*

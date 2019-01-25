@@ -2,11 +2,12 @@ package com.example.meirlen.mtrello.utill.interceptors;
 
 
 
-import com.example.meirlen.mtrello.BuildConfig;
 
 import java.io.IOException;
 
+
 import androidx.annotation.NonNull;
+import com.example.meirlen.mtrello.BuildConfig;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.Request;
