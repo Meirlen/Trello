@@ -2,12 +2,8 @@ package com.example.gateway.entity
 
 data class Column(
     val id: String,
-    val name: String,
-    val closed: Boolean,
-    val idBoard: String,
-    val pos: Int,
-    val subscribed: Boolean,
-    val cards: List<Card>
+    val name: String
+
 )
 
 data class Card(
