@@ -4,7 +4,7 @@
 
 - Kotlin
 - Koin()
-- Kotlin coroutines (async)
+- RxJAndroid
 - Retrofit
 - Android architecture components(ViewModel,LiveData)
 - MVVM(Clean  architecture)
